@@ -1,6 +1,7 @@
 package app;
 
 public final class SalesReportFormatter {
+    private static final String SEPARATOR = "=".repeat(40);
 
     private SalesReportFormatter() {
         throw new AssertionError("Utility class cannot be instantiated");
@@ -11,13 +12,13 @@ public final class SalesReportFormatter {
 
         StringBuilder sb = new StringBuilder();
         sb.append("Product Sales Report\n");
-        sb.append("=".repeat(40)).append("\n");
+        sb.append(SEPARATOR).append("\n");
 
         for (int i = 0; i < products.length; i++) {
             sb.append(String.format("(%d) %-15s EUR %.2f%n", i + 1, products[i], sales[i]));
         }
 
-        sb.append("=".repeat(40)).append("\n");
+        sb.append(SEPARATOR).append("\n");
         sb.append(String.format("Total Sales: EUR %.2f", calculateTotal(sales)));
 
         return sb.toString();
